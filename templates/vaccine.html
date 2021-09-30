@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Vaccine
+{% endblock title %}
+
+{% block body %}
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-4"></div>
+<div class="col-md-4">
+  {% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+<h2 class="text-center text-white bg-primary">Vaccine Details</h2>
+
+
+<form action="/vaccine" method="post" class="jumbotron">
+<div class="form-group">
+<label for="disease">Disease</label>
+<input type="text" class="form-control" name="disease"  required>
+
+</div>
+<div class="form-group">
+
+<label for="vacname">Vaccine Name</label>
+<input type="text" class="form-control" name="vacname"   required>
+
+</div>
+
+
+
+
+<div class="form-group">
+
+<label for="cost">Vaccine Cost</label>
+<input type="number" class="form-control" name="cost"  required>
+
+</div>
+
+  <button type="submit" class="btn btn-warning btn-sm btn-block">Save</button>
+
+</form>
+
+</div>
+<div class="col-md-4"></div>
+
+</div>
+
+</div>
+
+{% endblock body %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Vaccine Search
+{% endblock title %}
+
+{% block body %}
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  <center><h4><b><span style="background-color: #FFFF00">AVAILABE VACCINES</span></b></h4></center>
+  <div class="container mt-4" style="background-color:#f1f1f1">
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">VID</th>
+      <th scope="col">VACCINE NAME</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for post in query %}
+    <tr>
+      <th scope="row">{{post.vid}}</th>
+      <td>{{post.vacname}}</td>
+    </tr>
+{% endfor %}
+  
+  </tbody>
+</table>
+</div>
+
+
+{% endblock body %}
